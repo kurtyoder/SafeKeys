@@ -1,0 +1,25 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:SafeKeys.Styles">
+
+    <Color x:Key="RichBlack">#011627</Color>
+    <SolidColorBrush x:Key="RichBlackBrush" Color="{StaticResource RichBlack}" />
+
+    <Color x:Key="Grey">#314250</Color>
+    <SolidColorBrush x:Key="GreyBrush" Color="{StaticResource Grey}" />
+
+    <Color x:Key="LightGrey">#657A8D</Color>
+    <SolidColorBrush x:Key="LightGreyBrush" Color="{StaticResource LightGrey}" />
+
+    <Color x:Key="RadicalRed">#FF3366</Color>
+    <SolidColorBrush x:Key="RadicalRedBrush" Color="{StaticResource RadicalRed}" />
+
+    <Color x:Key="TiffanyBlue">#2EC4B6</Color>
+    <SolidColorBrush x:Key="TiffanyBlueBrush" Color="{StaticResource TiffanyBlue}" />
+
+    <Color x:Key="CulturedWhite">#F6F7F8</Color>
+    <SolidColorBrush x:Key="CulturedWhiteBrush" Color="{StaticResource CulturedWhite}" />
+
+    <Color x:Key="CarolinaBlue">#20A4F3</Color>
+    <SolidColorBrush x:Key="CarolinaBlueBrush" Color="{StaticResource CarolinaBlue}" />
+</ResourceDictionary>

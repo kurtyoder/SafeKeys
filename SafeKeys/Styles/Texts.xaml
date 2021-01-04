@@ -1,0 +1,167 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ap="clr-namespace:SafeKeys.AttatchedProperties"
+                    xmlns:vc="clr-namespace:SafeKeys.ValueConverters"
+                    xmlns:local="clr-namespace:SafeKeys.Styles"
+                    >
+
+    <!--default textbox-->  
+    <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource BaseStyle}">
+        <Setter Property="FontSize" Value="{StaticResource FontSizeLarge}" />
+        <Setter Property="Padding" Value="10" />
+        <Setter Property="Margin" Value="0 5" />
+        <Setter Property="BorderBrush" Value="{StaticResource CarolinaBlueBrush}" />
+        <Setter Property="BorderThickness" Value="0 0 0 1" />
+        <Setter Property="FontFamily" Value="{StaticResource Regular}" />
+
+        <Setter Property="Background" Value="{StaticResource GreyBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource CulturedWhiteBrush}" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBoxBase}">
+
+                    <Grid>
+                        <Border x:Name="border"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{TemplateBinding Background}"
+                                SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" />
+                        </Border>
+
+                        <TextBlock IsHitTestVisible="False"
+                                   Text="{TemplateBinding Tag}"
+                                   x:Name="PlaceholderText"
+                                   FontFamily="{StaticResource Regular}"
+                                   Padding="{TemplateBinding Padding}"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                   Foreground="{StaticResource CulturedWhiteBrush}">
+                            <TextBlock.Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Text, RelativeSource={RelativeSource TemplatedParent}}" Value="">
+                                            <Setter Property="Visibility" Value="Visible" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" TargetName="border" Value="0.56" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" TargetName="border" Value="#FF7EB4EA" />
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="BorderBrush" TargetName="border" Value="#FF569DE5" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--default passwordbox-->
+    <Style TargetType="{x:Type PasswordBox}" BasedOn="{StaticResource BaseStyle}">
+        <Setter Property="FontSize" Value="{StaticResource FontSizeLarge}" />
+        <Setter Property="Padding" Value="10" />
+        <Setter Property="Margin" Value="0 5" />
+        <Setter Property="BorderBrush" Value="{StaticResource CarolinaBlueBrush}" />
+        <Setter Property="BorderThickness" Value="0 0 0 1" />
+        <Setter Property="FontFamily" Value="{StaticResource Regular}" />
+
+        <Setter Property="Background" Value="{StaticResource GreyBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource CulturedWhiteBrush}" />
+
+        <Setter Property="ap:MonitorPasswordProperty.Value" Value="True" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type PasswordBox}">
+
+                    <Grid>
+                        <Border x:Name="border"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{TemplateBinding Background}"
+                                SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" />
+                        </Border>
+
+                        <TextBlock IsHitTestVisible="False"
+                                   Text="{TemplateBinding Tag}"
+                                   x:Name="PlaceholderText"
+                                   FontFamily="{StaticResource Regular}"
+                                   FontSize="{TemplateBinding FontSize}"
+                                   Padding="{TemplateBinding Padding}"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                   Foreground="{StaticResource CulturedWhiteBrush}"
+                                   Visibility="{TemplateBinding ap:HasTextProperty.Value, Converter={vc:BooleanVisiblityConverter}}">
+                        </TextBlock>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" TargetName="border" Value="0.56" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" TargetName="border" Value="#FF7EB4EA" />
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="BorderBrush" TargetName="border" Value="#FF569DE5" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style TargetType="{x:Type Path}" x:Key="SpinningCircle">
+        
+        <Setter Property="RenderTransformOrigin" Value="0.5, 0.5" />
+        <Setter Property="Stroke" Value="{StaticResource CulturedWhiteBrush}"/>
+        <Setter Property="Stretch" Value="Uniform"/>
+        <Setter Property="Width" Value="30"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="StrokeThickness" Value="5"/>
+        <Setter Property="Data" Value="m 4.2393852 296.17434 c -1.8796444 0.003 -3.40703621 -1.51593 -3.41371659 -3.39557 -0.006681 -1.87964 1.50988309 -3.40974 3.38951019 -3.41975 1.8796269 -0.01 3.4124078 1.50383 3.4257553 3.38344"/>
+
+        <Setter Property="RenderTransform">
+            <Setter.Value>
+                <RotateTransform />
+            </Setter.Value>
+        </Setter>
+
+        <Style.Resources>
+            <Storyboard x:Key="Spin">
+                <DoubleAnimation
+                    Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
+                    From="0"
+                    To="360"
+                    Duration="0:0:2"
+                    RepeatBehavior="Forever" />
+            </Storyboard>
+        </Style.Resources>
+
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=IsVisible}" Value="True">
+                <DataTrigger.EnterActions>
+                    <BeginStoryboard x:Name="SpinStoryBoard" Storyboard="{StaticResource Spin}" />
+                </DataTrigger.EnterActions>
+                <DataTrigger.ExitActions>
+                    <RemoveStoryboard BeginStoryboardName="SpinStoryBoard" />
+                </DataTrigger.ExitActions>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+
+</ResourceDictionary>

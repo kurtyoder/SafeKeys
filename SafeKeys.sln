@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SafeKeys", "SafeKeys\SafeKeys.csproj", "{C04D3677-64B7-45D2-938A-19B175BD0EEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SafeKeys.Library", "SafeKeys.Library\SafeKeys.Library.csproj", "{5C0C2FE0-B7E0-466A-BF6D-5056A855DFC7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C04D3677-64B7-45D2-938A-19B175BD0EEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C04D3677-64B7-45D2-938A-19B175BD0EEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C04D3677-64B7-45D2-938A-19B175BD0EEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C04D3677-64B7-45D2-938A-19B175BD0EEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C0C2FE0-B7E0-466A-BF6D-5056A855DFC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C0C2FE0-B7E0-466A-BF6D-5056A855DFC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C0C2FE0-B7E0-466A-BF6D-5056A855DFC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C0C2FE0-B7E0-466A-BF6D-5056A855DFC7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FAB2D26E-01F5-47AD-B2F3-73661B454F03}
+	EndGlobalSection
+EndGlobal

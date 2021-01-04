@@ -1,0 +1,250 @@
+﻿<UserControl x:Class="SafeKeys.Views.SettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SafeKeys.Views"
+             mc:Ignorable="d" 
+             Background="{StaticResource RichBlackBrush}"
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <ScrollViewer VerticalScrollBarVisibility="auto">
+        <Grid>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Horizontal" Margin="20">
+                <Button
+                    HorizontalAlignment="Left"
+                    Content="Back"
+                    x:Name="Return"
+                    Padding="20 10"
+                 />
+
+                <Button
+                    HorizontalAlignment="Left"
+                    Content="Save"
+                    x:Name="Save"
+                    Margin="10 0"
+                    Padding="20 10"
+                 />
+
+               
+            </StackPanel>           
+           
+
+
+
+            <!--USERNAME PREF-->
+            <StackPanel 
+                Margin="20 0"
+                Grid.Row="1"
+                Grid.Column="0"
+                >
+
+              
+                <TextBlock 
+                Text="Username Generation Preference"
+                Foreground="{StaticResource GreyBrush}"
+                FontSize="{StaticResource FontSizeLarge}"
+                FontFamily="{StaticResource Regular}"
+                Margin="0 10"
+                />
+
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                     <TextBox x:Name="UserAdj" Margin="0 0 10 0" MinWidth="50"/>
+                    <TextBlock 
+                    FontFamily="{StaticResource Regular}"
+                    Foreground="{StaticResource CulturedWhiteBrush}"
+                    VerticalAlignment="Center"
+                    Text="Adjective Count"/>
+                   
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                    <TextBox x:Name="UserName" Margin="0 0 10 0" MinWidth="50"/>
+                    <TextBlock 
+                    FontFamily="{StaticResource Regular}"
+                    Foreground="{StaticResource CulturedWhiteBrush}"
+                    VerticalAlignment="Center"
+                    Text="Name Count"/>
+                    
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                    <TextBox x:Name="UserWord" Margin="0 0 10 0" MinWidth="50"/>
+                    <TextBlock 
+                    FontFamily="{StaticResource Regular}"
+                    Foreground="{StaticResource CulturedWhiteBrush}"
+                    VerticalAlignment="Center"
+                    Text="Word Count"/>
+                    
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                    <TextBox x:Name="UserBigWord" Margin="0 0 10 0" MinWidth="50"/>
+                    <TextBlock 
+                    FontFamily="{StaticResource Regular}"
+                    Foreground="{StaticResource CulturedWhiteBrush}"
+                    VerticalAlignment="Center"
+                    Text="Large Word Count"/>
+                    
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                    <TextBox x:Name="UserRegChar" Margin="0 0 10 0" MinWidth="50"/>
+                    <TextBlock 
+                    FontFamily="{StaticResource Regular}"
+                    Foreground="{StaticResource CulturedWhiteBrush}"
+                    VerticalAlignment="Center"
+                    Text="Regular Char Count"/>
+                    
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                    <TextBox x:Name="UserIrregChar" Margin="0 0 10 0" MinWidth="50"/>
+                    <TextBlock 
+                    FontFamily="{StaticResource Regular}"
+                    Foreground="{StaticResource CulturedWhiteBrush}"
+                    VerticalAlignment="Center"
+                    Text="Special Char Count"/>
+                    
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                     <TextBox x:Name="UserLetter" Margin="0 0 10 0" MinWidth="50"/>
+                    <TextBlock 
+                    FontFamily="{StaticResource Regular}"
+                    Foreground="{StaticResource CulturedWhiteBrush}"
+                    VerticalAlignment="Center"
+                    Text="Letter Count"/>
+                   
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                    <TextBox x:Name="UserNumber" Margin="0 0 10 0" MinWidth="50"/>
+                    <TextBlock 
+                    FontFamily="{StaticResource Regular}"
+                    Foreground="{StaticResource CulturedWhiteBrush}"
+                    VerticalAlignment="Center"
+                    Text="Number Count"/>
+                    
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                    <TextBox x:Name="UserFakeWord" Margin="0 0 10 0" MinWidth="50"/>
+                    <TextBlock 
+                    FontFamily="{StaticResource Regular}"
+                    Foreground="{StaticResource CulturedWhiteBrush}"
+                    VerticalAlignment="Center"
+                    Text="Fake Word Count"/>
+                    
+                </StackPanel>
+
+            </StackPanel>
+
+            <!--PASSWORD PREF-->
+            <StackPanel 
+                Margin="20 0"
+                Grid.Row="1"
+                Grid.Column="1"
+                >
+
+
+                <TextBlock 
+                Text="Password Generation Preference"
+                Foreground="{StaticResource GreyBrush}"
+                FontSize="{StaticResource FontSizeLarge}"
+                FontFamily="{StaticResource Regular}"
+                Margin="0 10"
+                />
+
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                    <TextBox x:Name="PasswordAdj" Margin="0 0 10 0" MinWidth="50"/>
+                    <TextBlock 
+                    FontFamily="{StaticResource Regular}"
+                    Foreground="{StaticResource CulturedWhiteBrush}"
+                    VerticalAlignment="Center"
+                    Text="Adjective Count"/>
+                    
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                    <TextBox x:Name="PasswordName" Margin="0 0 10 0" MinWidth="50"/>
+                    <TextBlock 
+                    FontFamily="{StaticResource Regular}"
+                    Foreground="{StaticResource CulturedWhiteBrush}"
+                    VerticalAlignment="Center"
+                    Text="Name Count"/>
+                    
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                    <TextBox x:Name="PasswordWord" Margin="0 0 10 0" MinWidth="50"/>
+                    <TextBlock 
+                    FontFamily="{StaticResource Regular}"
+                    Foreground="{StaticResource CulturedWhiteBrush}"
+                    VerticalAlignment="Center"
+                    Text="Word Count"/>
+                    
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                    <TextBox x:Name="PasswordBigWord" Margin="0 0 10 0" MinWidth="50"/>
+                    <TextBlock 
+                    FontFamily="{StaticResource Regular}"
+                    Foreground="{StaticResource CulturedWhiteBrush}"
+                    VerticalAlignment="Center"
+                    Text="Large Word Count"/>
+                    
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                    <TextBox x:Name="PasswordRegChar" Margin="0 0 10 0" MinWidth="50"/>
+                    <TextBlock 
+                    FontFamily="{StaticResource Regular}"
+                    Foreground="{StaticResource CulturedWhiteBrush}"
+                    VerticalAlignment="Center"
+                    Text="Regular Char Count"/>
+                    
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                    <TextBox x:Name="PasswordIrregChar" Margin="0 0 10 0" MinWidth="50"/>
+                    <TextBlock 
+                    FontFamily="{StaticResource Regular}"
+                    Foreground="{StaticResource CulturedWhiteBrush}"
+                    VerticalAlignment="Center"
+                    Text="Special Char Count"/>
+                    
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                    <TextBox x:Name="PasswordLetter" Margin="0 0 10 0" MinWidth="50"/>
+                    <TextBlock 
+                    FontFamily="{StaticResource Regular}"
+                    Foreground="{StaticResource CulturedWhiteBrush}"
+                    VerticalAlignment="Center"
+                    Text="Letter Count"/>
+                    
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                    <TextBox x:Name="PasswordNumber" Margin="0 0 10 0" MinWidth="50"/>
+                    <TextBlock 
+                    FontFamily="{StaticResource Regular}"
+                    Foreground="{StaticResource CulturedWhiteBrush}"
+                    VerticalAlignment="Center"
+                    Text="Number Count"/>
+                    
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                    <TextBox x:Name="PasswordFakeWord" Margin="0 0 10 0" MinWidth="50"/>
+                    <TextBlock 
+                    FontFamily="{StaticResource Regular}"
+                    Foreground="{StaticResource CulturedWhiteBrush}"
+                    VerticalAlignment="Center"
+                    Text="Fake Word Count"/>
+                    
+                </StackPanel>
+
+            </StackPanel>
+
+        </Grid>
+        
+      
+    </ScrollViewer>
+</UserControl>

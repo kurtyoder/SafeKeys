@@ -1,0 +1,115 @@
+﻿<UserControl    
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:cal="http://www.caliburnproject.org"
+    xmlns:local="clr-namespace:SafeKeys.Controls"
+    xmlns:vc="clr-namespace:SafeKeys.ValueConverters"
+    x:Class="SafeKeys.Controls.KeyControl"
+    mc:Ignorable="d"   
+    MaxWidth="250">
+
+    <UserControl.Resources>
+        <Style x:Key="UserControlStyle" TargetType="{x:Type ContentControl}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ContentControl}">
+
+                        <Border Margin="2 0 2 2" Padding="10 0 10 10"
+                                Background="{StaticResource GreyBrush}"
+                                BorderBrush="Transparent"
+                                BorderThickness="3"
+                                x:Name="background">
+
+                            <Grid  x:Name="container"
+                                   cal:Message.Attach="[Event MouseDown] = [Action Open($this)]; [Event TouchDown] = [Action Open($this)]"
+                                   
+                                   >
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />                                   
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Border
+                                    Background="{StaticResource RadicalRedBrush}"
+                                    Padding="3" Margin="0 0 0 10"
+                                    Grid.ColumnSpan="2"
+                                    Visibility="{Binding Path=PasswordGood, Converter={vc:BooleanVisiblityConverter}}" />
+
+                                <TextBlock Text="{Binding Path=Title, FallbackValue=Title}"
+                                           Foreground="{StaticResource CulturedWhiteBrush}"
+                                           FontFamily="{StaticResource Bold}"
+                                           FontSize="{StaticResource FontSizeLarge}"
+                                           Padding="0 0 15 5"
+                                           
+                                           Grid.Row="1" />
+
+                                <TextBlock Text="{Binding Path=Username, FallbackValue=Username}"
+                                           Foreground="{StaticResource CulturedWhiteBrush}"
+                                           Grid.Row="2"                                          
+                                           FontSize="{StaticResource FontSizeLarge}"
+                                           Padding="0 0 15 10" />
+                                
+                                <ContentControl 
+                                    Grid.Column="1"                                    
+                                    cal:Message.Attach="[Event MouseDown] = [Action Copy($this, $eventArgs)]; [Event TouchDown] = [Action Copy($this, $eventArgs)]"                                    
+                                    Grid.Row="1"                           
+                                    x:Name="CopyButton"                           
+                                    Margin="10 0 0 0"
+                                    Width="20"
+                                    VerticalAlignment="Top"
+                                    HorizontalAlignment="Right"
+                                    Visibility="Hidden"
+                                    Height="20"
+                                    Style="{StaticResource CopyButton}"                                   
+                                    />
+                            </Grid>
+                        </Border>
+                        <!--Fade in out animation for the item-->
+                        <ControlTemplate.Triggers>
+
+                            <!--Is selected effect-->
+
+                            <EventTrigger RoutedEvent="MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation To="{StaticResource CarolinaBlue}" Duration="0:0:0.3" Storyboard.TargetName="background" Storyboard.TargetProperty="BorderBrush.Color" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+
+                            <EventTrigger RoutedEvent="MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation To="Transparent" Duration="0:0:0.3" Storyboard.TargetName="background" Storyboard.TargetProperty="BorderBrush.Color" />
+                                    
+                                        
+                                    </Storyboard>
+                                </BeginStoryboard>
+
+                               
+                            </EventTrigger>
+
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Visibility" TargetName="CopyButton" Value="Visible"/>
+                            </Trigger>
+
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <ContentControl
+        Style="{StaticResource UserControlStyle}" />
+</UserControl>

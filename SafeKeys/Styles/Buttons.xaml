@@ -1,0 +1,318 @@
+﻿
+    <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ap="clr-namespace:SafeKeys.AttatchedProperties"
+                    xmlns:vc="clr-namespace:SafeKeys.ValueConverters"
+                    xmlns:local="clr-namespace:SafeKeys.Styles">
+
+    <ResourceDictionary.MergedDictionaries>
+        <!--Order is important-->
+        <ResourceDictionary Source="Colors.xaml" />
+        <ResourceDictionary Source="Fonts.xaml" />
+        <ResourceDictionary Source="Texts.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <!--default button-->
+    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource BaseStyle}">
+
+        <Setter Property="Background" Value="{StaticResource CarolinaBlueBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource CulturedWhiteBrush}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeLarge}" />
+        <Setter Property="FontFamily" Value="{StaticResource Regular}" />
+        <!--<Setter Property="Padding" Value="50 10" />
+        <Setter Property="Margin" Value="0 10" />-->
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ButtonBase}">
+                    <Border x:Name="border"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}"
+                            SnapsToDevicePixels="True"
+                            CornerRadius="5">
+
+                        <Grid>
+                            <TextBlock
+                                Text="{TemplateBinding Content}"
+                                Focusable="False"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                Margin="{TemplateBinding Padding}"
+                                FontSize="{TemplateBinding FontSize}"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                FontFamily="{TemplateBinding FontFamily}"
+                                Visibility="{TemplateBinding ap:IsBusyProperty.Value, Converter={vc:BooleanVisiblityConverter}}"
+                                />
+
+                            <Path 
+                                Style="{StaticResource SpinningCircle}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                Visibility="{TemplateBinding ap:IsBusyProperty.Value, Converter={vc:BooleanVisiblityConverter}, ConverterParameter=Flip}"
+                                />
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation To="{StaticResource TiffanyBlue}" Duration="0:0:0.3" Storyboard.TargetName="border" Storyboard.TargetProperty="Background.Color" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation To="{StaticResource CarolinaBlue}" Duration="0:0:0.3" Storyboard.TargetName="border" Storyboard.TargetProperty="Background.Color" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource LightGreyBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    
+
+    <!--link style button-->
+    <Style x:Key="LinkButton" TargetType="{x:Type Button}" BasedOn="{StaticResource BaseStyle}">
+
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{StaticResource CulturedWhiteBrush}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeLarge}" />
+        <Setter Property="FontFamily" Value="{StaticResource Regular}" />
+        <!--<Setter Property="Padding" Value="50 10" />
+        <Setter Property="Margin" Value="0 10" />-->
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ButtonBase}">
+                    <Border x:Name="border"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}"
+                            SnapsToDevicePixels="True"
+                            CornerRadius="10">
+                        <TextBlock
+                            Text="{TemplateBinding Content}"
+                            Focusable="False"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            Margin="{TemplateBinding Padding}"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            FontFamily="{TemplateBinding FontFamily}"
+                            FontSize="{TemplateBinding FontSize}" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation To="{StaticResource CarolinaBlue}" Duration="0:0:0.3" Storyboard.TargetProperty="Foreground.Color" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation To="{StaticResource CulturedWhite}"  Duration="0:0:0.3" Storyboard.TargetProperty="Foreground.Color" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Foreground" Value="{StaticResource GreyBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--flat button-->
+    <Style x:Key="FlatButton" TargetType="{x:Type Button}" BasedOn="{StaticResource BaseStyle}">
+
+        <Setter Property="Background" Value="{StaticResource CarolinaBlueBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource CulturedWhiteBrush}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeLarge}" />
+        <Setter Property="FontFamily" Value="{StaticResource Regular}" />
+        <Setter Property="Padding" Value="10 5" />
+        <Setter Property="Margin" Value="0 10" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ButtonBase}">
+                    <Border x:Name="border"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}"
+                            SnapsToDevicePixels="True">
+
+                        <Grid>
+                            <TextBlock
+                                Text="{TemplateBinding Content}"
+                                Focusable="False"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                Margin="{TemplateBinding Padding}"
+                                FontSize="{TemplateBinding FontSize}"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                FontFamily="{TemplateBinding FontFamily}" />
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation To="{StaticResource TiffanyBlue}" Duration="0:0:0.3" Storyboard.TargetName="border" Storyboard.TargetProperty="Background.Color" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation To="{StaticResource CarolinaBlue}" Duration="0:0:0.3" Storyboard.TargetName="border" Storyboard.TargetProperty="Background.Color" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource GreyBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!--warning button-->
+    <!--default button-->
+    <Style x:Key="WarningButton" TargetType="{x:Type Button}" BasedOn="{StaticResource BaseStyle}">
+
+        <Setter Property="Background" Value="{StaticResource RadicalRedBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource CulturedWhiteBrush}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeLarge}" />
+        <Setter Property="FontFamily" Value="{StaticResource Regular}" />
+        <!--<Setter Property="Padding" Value="50 10" />
+        <Setter Property="Margin" Value="0 10" />-->
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ButtonBase}">
+                    <Border x:Name="border"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}"
+                            SnapsToDevicePixels="True"
+                            CornerRadius="5">
+
+                        <Grid>
+                            <TextBlock
+                                Text="{TemplateBinding Content}"
+                                Focusable="False"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                Margin="{TemplateBinding Padding}"
+                                FontSize="{TemplateBinding FontSize}"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                FontFamily="{TemplateBinding FontFamily}" />
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation To="{StaticResource TiffanyBlue}" Duration="0:0:0.3" Storyboard.TargetName="border" Storyboard.TargetProperty="Background.Color" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation To="{StaticResource RadicalRed}" Duration="0:0:0.3" Storyboard.TargetName="border" Storyboard.TargetProperty="Background.Color" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource GreyBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="CopyButton" TargetType="ContentControl">       
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ContentControl">
+                    <Grid>
+
+                        <Path 
+                            Name="path" 
+                            Fill="{StaticResource LightGreyBrush}"
+                            Stroke="{StaticResource RichBlackBrush}"
+                            Stretch="UniformToFill"
+                            StrokeThickness=".5"      
+                            
+                            Data="m 10.626953 2.6953125 v 2.7207031 h 8.3125 l 3.943359 6.4783234 v 14.46113 h 3.816407 V 9.0878906 L 22.775391 2.6953125 Z M 5.8066406 6.4003906 V 30.060547 H 21.878906 v -3.703125 -0.002 -13.915327 L 18.247951 6.4296875 10.626953 6.4003906 H 8.2167969 Z">
+
+                        </Path>
+
+                        <Path
+                            Name="checkmark"
+                            Stroke="{StaticResource TiffanyBlueBrush}"
+                            StrokeThickness="1"
+                            Stretch="UniformToFill"
+                            Opacity="0"
+                            Data="m 0.86565509 293.14206 1.70089281 2.2088 5.0436197 -5.27985"/>
+
+                    </Grid>
+                  
+                    
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Fill" TargetName="path" Value="{StaticResource CarolinaBlueBrush}"/>                           
+                        </Trigger>
+
+
+                        <EventTrigger RoutedEvent="ContentControl.MouseUp">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimationUsingKeyFrames
+                                        Storyboard.TargetProperty="Opacity"
+                                        Storyboard.TargetName="checkmark">
+                                        <DiscreteDoubleKeyFrame KeyTime="0:0:0" Value="1"/>                                       
+                                        <DiscreteDoubleKeyFrame KeyTime="0:0:3" Value="0"/>
+                                    </DoubleAnimationUsingKeyFrames>
+                                    <DoubleAnimationUsingKeyFrames
+                                        Storyboard.TargetProperty="Opacity"
+                                        Storyboard.TargetName="path">
+                                        <DiscreteDoubleKeyFrame KeyTime="0:0:0" Value="0"/>                                        
+                                        <DiscreteDoubleKeyFrame KeyTime="0:0:3" Value="1"/>
+                                    </DoubleAnimationUsingKeyFrames>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                       
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

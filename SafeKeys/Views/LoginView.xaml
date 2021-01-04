@@ -1,0 +1,96 @@
+﻿<UserControl x:Class="SafeKeys.Views.LoginView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:SafeKeys.Views"
+             xmlns:vc="clr-namespace:SafeKeys.ValueConverters"
+             xmlns:ap="clr-namespace:SafeKeys.AttatchedProperties"
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="800"             
+             xmlns:cal="http://www.caliburnproject.org"
+             >
+
+
+    <Grid Background="{StaticResource RichBlackBrush}">
+
+
+        <ScrollViewer VerticalScrollBarVisibility="auto" HorizontalScrollBarVisibility="auto">
+            <StackPanel VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        TextBlock.TextAlignment="Center">
+                <Border Background="{StaticResource GreyBrush}"
+                        CornerRadius="4"
+                        Padding="15 50 15 15"
+                        MinWidth="350"
+                        MaxWidth="425"
+                        Margin="50 50 50 0">
+
+                    <StackPanel>
+
+                        <TextBlock Text="Login" FontSize="{StaticResource FontSizeXXL}"
+                                   FontFamily="{StaticResource Bold}"
+                                   FontWeight="Heavy"
+                                   Foreground="{StaticResource CulturedWhiteBrush}" />
+
+                        <Border Margin="7" />
+
+                        <!--file-->
+                        <TextBlock Text="{Binding DisplayPath}"
+                                   FontFamily="{StaticResource Regular}"
+                                   Foreground="{StaticResource CarolinaBlueBrush}"
+                                   FontSize="{StaticResource FontSizeLarge}" />
+
+                        <Border Padding="5" />
+
+                        <TextBlock Text="{Binding FailedLogin}"
+                                   FontSize="{StaticResource FontSizeRegular}"
+                                   FontWeight="Bold"
+                                   FontFamily="{StaticResource Bold}"
+                                   Foreground="{StaticResource RadicalRedBrush}"
+                                   Visibility="{Binding Path=Message, Converter={vc:BooleanCollapsedConverter}, ConverterParameter=1}" 
+                                   />
+
+                        <!--password-->
+                        <PasswordBox 
+                            x:Name="PasswordField"
+                            PasswordChanged="PasswordField_PasswordChanged"
+                            ap:IsFocusedProperty.Value="True"
+                            Tag="Password">
+                            <PasswordBox.InputBindings>
+                                <KeyBinding Key="Enter" 
+                                            Command="{Binding LoginCommand}"/>
+                            </PasswordBox.InputBindings>
+                        </PasswordBox>
+
+
+
+                        <Border Margin="5" />
+
+                        <Button
+                            x:Name="Login"  
+                            ap:IsBusyProperty.Value="{Binding LoginBusy}"
+                            Padding="15 10"
+                            Content="Continue"  
+                          
+                            HorizontalAlignment="Center"                           
+                            />
+                    </StackPanel>
+                </Border>
+
+                <Button Style="{StaticResource LinkButton}"
+                        x:Name="SwitchFile"
+                        Padding="10"
+                        Margin="0 5 0 0"
+                        Content="Choose different file"
+                        HorizontalAlignment="Center" />
+                <Button Style="{StaticResource LinkButton}"
+                        x:Name="CreateFile"
+                        Padding="5"
+                        Margin="0"
+                        Content="Create new file"
+                        HorizontalAlignment="Center" />
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

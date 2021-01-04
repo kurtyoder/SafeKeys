@@ -1,0 +1,199 @@
+﻿<UserControl x:Class="SafeKeys.Views.KeyEditorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:SafeKeys.Views"
+             mc:Ignorable="d"
+             xmlns:vc="clr-namespace:SafeKeys.ValueConverters"
+             Background="{StaticResource RichBlackBrush}"
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <ScrollViewer VerticalScrollBarVisibility="auto">
+
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Border
+                HorizontalAlignment="Center"
+                CornerRadius="5"
+                Background="{StaticResource GreyBrush}"  
+                Padding="20 10"
+                Margin="0 10"
+                
+                Visibility="{Binding Path=IsEditing, Converter={vc:BooleanVisiblityConverter}, ConverterParameter=1}"
+                >
+                <StackPanel>
+
+                    <TextBlock 
+                        Text="Key Stats"
+                        FontFamily="{StaticResource Regular}"
+                        FontSize="{StaticResource FontSizeLarge}"
+                        Foreground="{StaticResource CarolinaBlueBrush}"
+                        />
+                    <TextBlock 
+                        Text="{Binding DatePasswordChanged}"
+                         FontFamily="{StaticResource Regular}"
+                        FontSize="{StaticResource FontSizeRegular}"
+                        Foreground="{StaticResource CulturedWhiteBrush}"
+                        />
+                    <TextBlock 
+                        Text="{Binding DateCreated}"
+                        FontFamily="{StaticResource Regular}"
+                        FontSize="{StaticResource FontSizeRegular}"
+                        Foreground="{StaticResource CulturedWhiteBrush}"
+                        />
+                    <TextBlock 
+                        Text="Password hasn't been changed in over a year!"
+                        FontFamily="{StaticResource Bold}"
+                        FontSize="{StaticResource FontSizeRegular}"
+                        Foreground="{StaticResource RadicalRedBrush}"
+                        Visibility="{Binding Path=PasswordGood, Converter={vc:BooleanCollapsedConverter}}"
+                        
+                        />
+
+                </StackPanel>
+            </Border>
+            
+
+            <StackPanel 
+                Grid.Row="1"
+                Margin="20" 
+                MaxWidth="500"
+                >
+                
+                <Button
+                    HorizontalAlignment="Left"
+                    Content="Back"
+                    x:Name="Return"
+                    Padding="20 10"
+                    Margin="0 0 0 10" />
+
+                <TextBlock
+                    Text="Title"
+                    FontSize="{StaticResource FontSizeXL}"
+                    Foreground="{StaticResource CulturedWhiteBrush}"
+                    />
+
+                <TextBox
+                    x:Name="Title"          
+                    Margin="0 0 0 10" />
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock                     
+                        Text="Username"
+                        FontSize="{StaticResource FontSizeXL}"
+                        Foreground="{StaticResource CulturedWhiteBrush}" />
+
+                    <Button 
+                        x:Name="CopyUsername"
+                        Content="Copy"
+                        HorizontalAlignment="Center"
+                        Margin="10 0"
+                        Grid.Column="1"
+                        Style="{StaticResource LinkButton}" />
+                    <Button 
+                        x:Name="GenerateUsername"
+                        Content="Generate"
+                        HorizontalAlignment="Right"
+                        Grid.Column="2"
+                        Style="{StaticResource LinkButton}" />
+
+                </Grid>
+
+                <TextBox 
+                    x:Name="Username"
+                    Margin="0 0 0 10" />
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock 
+                        Text="Password"
+                        Grid.Column="0"
+                        FontSize="{StaticResource FontSizeXL}"
+                        Foreground="{StaticResource CulturedWhiteBrush}" />
+
+
+                    <Button 
+                        x:Name="CopyPassword"
+                        Content="Copy"
+                        HorizontalAlignment="Center"
+                        Margin="10 0"
+                        Grid.Column="1"
+                        Style="{StaticResource LinkButton}" />
+                    <Button 
+                        x:Name="GeneratePassword"
+                        Content="Generate"
+                        HorizontalAlignment="Right"
+                        Grid.Column="2"
+                        Style="{StaticResource LinkButton}" />
+                </Grid>
+
+                <TextBox 
+                    x:Name="Password"
+                    Margin="0 0 0 10" />
+
+                <TextBlock 
+                    Text="Category"
+                    FontSize="{StaticResource FontSizeXL}"
+                    Foreground="{StaticResource CulturedWhiteBrush}"
+                />
+
+                <ComboBox    
+                    x:Name="Categories"
+                    IsEnabled="{Binding Path=HasCategories}"
+                    >
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock
+                                Text="{Binding Name}"
+                                FontSize="{StaticResource FontSizeLarge}"
+                                FontFamily="{StaticResource Regular}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <Button 
+                    x:Name="Save"
+                    Padding="20 10"
+                    Margin="0 10 0 0"
+                    HorizontalAlignment="Left"
+                    Content="Save"
+                />
+
+                <Button 
+                    x:Name="Delete"
+                    Padding="20 10"
+                    Margin="0 10 0 0"
+                    Style="{StaticResource WarningButton}"
+                    HorizontalAlignment="Left"
+                    Content="{Binding DeleteButtonText}"               
+                    Visibility="{Binding Path=IsEditing, Converter={vc:BooleanCollapsedConverter}, ConverterParameter=1}"
+                />
+
+
+            </StackPanel>
+        </Grid>
+        
+    
+
+
+
+
+    </ScrollViewer>
+</UserControl>
